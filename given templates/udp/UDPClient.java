@@ -39,8 +39,8 @@ public class UDPClient {
     // TO-DO: Construct UDP client class and try to send messages
 
 		UDPClient udpclient = new UDPClient();
-		System.out.printIn("Constructing UDP client and trying to send messages");
-		udpclient.testloop(serverAddr, revcPort, countTo);
+		System.out.println("Constructing UDP client and trying to send messages");
+		udpclient.testLoop(serverAddr, recvPort, countTo);
 	}
 
 	public UDPClient() {
@@ -91,7 +91,7 @@ public class UDPClient {
 		}
 		catch (IOException e)
 		{
-			System.out.printIn("Packet sending to the server failed.");
+			System.out.println("Packet sending to the server failed.");
 			System.exit(-1);
 		}
 

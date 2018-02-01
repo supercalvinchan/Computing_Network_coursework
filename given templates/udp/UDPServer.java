@@ -25,7 +25,7 @@ public class UDPServer {
 		DatagramPacket 	pac;
 
 		// TO-DO: Receive the messages and process them by calling processMessage(...).
-    boolean close = 0;
+    boolean close = false;
 		System.out.println("Receiving the message in an expected time range");
 		pacSize = 5000;
     pacData = new byte[5000];
@@ -35,7 +35,7 @@ public class UDPServer {
 
     try{
 			recvSoc.setSoTimeout(300000000);//in millisecond
-			revSoc.receive(pac);
+			recvSoc.receive(pac);
 			String pacString = new String (pac.getData()).trim();// trim(): for removing whitespace from both sides of a string
       processMessage(pacString);
 		}catch(IOException e)
@@ -58,7 +58,7 @@ public class UDPServer {
 		   msg = new MessageInfo(data);
 	   }catch(Exception e)
 	   {
-		   System.out.printIn("Error:Constructing new MessageInfo Object has failed");
+		   System.out.println("Error:Constructing new MessageInfo Object has failed");
 	   }
 
 		// TO-DO: On receipt of first message, initialise the receive buffer
@@ -122,7 +122,7 @@ public class UDPServer {
 		try {
 			Server.run();
 		} catch (Exception e) {
-			System.out.println("Error: Could not Contrusting Server Object has failed " + rp);
+			System.out.println("Error: Could not Contrusting Server Object has failed " );
 		}
 
 	}
