@@ -20,13 +20,13 @@ public class RMIClient {
 
 		 //Check arguments for Server host and number of messages
 		if (args.length < 2){
-			System.out.println("Needs 2 arguments: ServerHostName/IPAddress, TotalMessageCount");
+			System.out.println("Needs 2 arguments: ServerH./scripts/ostName/IPAddress, TotalMessageCount");
 			System.exit(-1);
 		}
 
 
 
-                //This gets IP address from arg[0], and port from arg[1]
+                //This gets IP address from arg[0], and total number of messages from arg[1]
 		String urlServer = new String("rmi://" + args[0] + "/RMIServer");
 		int numMessages = Integer.parseInt(args[1]);
 
