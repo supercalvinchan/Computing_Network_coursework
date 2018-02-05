@@ -34,10 +34,12 @@ public class UDPServer {
 		// Use a timeout (e.g. 30 secs) to ensure the program doesn't block forever
 
     try{
-			recvSoc.setSoTimeout(300000000);//in millisecond
+			recvSoc.setSoTimeout(100000);//in millisecond
 			recvSoc.receive(pac);
 			String pacString = new String (pac.getData()).trim();// trim(): for removing whitespace from both sides of a string
-      processMessage(pacString);
+System.out.println("Debug");
+			processMessage(pacString);
+			System.out.println("Debug1");
 		}catch(IOException e)
 		{
 			  System.out.println("Getting IOException when receiving the packets.");
@@ -65,17 +67,23 @@ public class UDPServer {
 		if(receivedMessages==null){
 					totalMessages = msg.totalMessages;
 					receivedMessages = new int[totalMessages];
+           System.out.println("Debug3");
 		}
+		System.out.println("Debug4");
 		// TO-DO: Log receipt of the message
       receivedMessages[msg.messageNum] = 1;
 		// TO-DO: If this is the last expected message, then identify
 		//        any missing messages
+     System.out.println("Debug5");
 
 		if (msg.messageNum + 1 == msg.totalMessages) {
 			boolean close = true;
-
+      System.out.println("Debug8");
 			String s = "Lost packet numbers: ";
+
+
 			int count = 0;
+      System.out.println("Debug7");
 			for (int i = 0; i < totalMessages; i++) {
 				if (receivedMessages[i] != 1) {
 					count++;
@@ -83,8 +91,11 @@ public class UDPServer {
 				}
 			}
 
-			if (count == 0) s = s + "None";
+			System.out.println("Debug6");
+			if (count == 0) {s = s + "None";}
 
+
+		  System.out.println("Debug2");
 			System.out.println("Of " + msg.totalMessages + ", " + (msg.totalMessages - count) + " received successfully");
 			System.out.println("Of " + msg.totalMessages + ", " + count + " failed");
 
