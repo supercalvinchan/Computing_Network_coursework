@@ -69,7 +69,9 @@ public class RMIServer extends UnicastRemoteObject implements RMIServerI {
 		// Instantiate the server class, bind to RMI registry
                 try{
                     rmis=new RMIServer();
-                    rebindServer("rmi://146.169.53.226:2000/RMIServer", rmis);
+                    Registry registry=LocateRegistry.getRegistry();
+                    registry.rebind("RMIServer", rmis);
+                    rebindServer("rmi://146.169.53.226:1099/RMIServer", rmis);
                 }catch(Exception e){
                     System.out.println("binding exception");
                     e.printStackTrace();
@@ -88,7 +90,7 @@ public class RMIServer extends UnicastRemoteObject implements RMIServerI {
 		// Registry.rebind (as returned by createRegistry / getRegistry) does something similar 
 		// but expects different things from the URL field.
                 try{
-                    LocateRegistry.createRegistry(2000);
+                    LocateRegistry.createRegistry(1099);
                     Naming.rebind(serverURL, server);
                 }catch(RemoteException e){
                     System.out.println("failed to create registry");
