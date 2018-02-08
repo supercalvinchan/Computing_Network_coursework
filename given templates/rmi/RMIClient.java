@@ -42,8 +42,8 @@ public class RMIClient {
                 try{
                     //Get IP address and port for registry
                     //And bind server to the registry
-                    Registry registry=LocateRegistry.getRegistry(args[0],2000);
-                    iRMIServer=(RMIServerI)registry.lookup(urlServer);
+                    Registry registry=LocateRegistry.getRegistry(urlServer,2000);
+                    iRMIServer=(RMIServerI)Naming.lookup(urlServer);
 
 
 		    //Attempt to send messages the specified number of times
