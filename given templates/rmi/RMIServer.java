@@ -70,6 +70,7 @@ public class RMIServer extends UnicastRemoteObject implements RMIServerI {
                 try{
                     rmis=new RMIServer();
                     rebindServer("localhost", rmis);
+                    System.out.println("waiting for messages...");
                 }catch(Exception e){
                     System.out.println("binding exception");
                     e.printStackTrace();
