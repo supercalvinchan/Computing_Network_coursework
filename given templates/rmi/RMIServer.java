@@ -45,7 +45,7 @@ public class RMIServer extends UnicastRemoteObject implements RMIServerI {
                     }
 
 
-                        System.out.println( (totalMessages-failed) + " messages received, "+failed+ "failed");
+                        System.out.println( (totalMessages-failed) + " messages received, "+failed+ " failed");
 
                     
             
