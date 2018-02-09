@@ -33,7 +33,7 @@ public class RMIClient {
 
 
 		//Initialise Security Manager
-                if(System.getSecurityManager()==null)
+              //  if(System.getSecurityManager()==null)
                     System.setSecurityManager(new SecurityManager());
 
 
@@ -42,7 +42,7 @@ public class RMIClient {
                 try{
                     //Get IP address and port for registry
                     //And bind server to the registry
-                    Registry registry=LocateRegistry.getRegistry(urlServer,2000);
+                    Registry registry=LocateRegistry.getRegistry(args[0]);
                     iRMIServer=(RMIServerI)Naming.lookup(urlServer);
 
 
