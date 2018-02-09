@@ -44,13 +44,10 @@ public class RMIServer extends UnicastRemoteObject implements RMIServerI {
                             failed++;
                     }
 
-                    if(failed==0)
-                        System.out.println("all received");
 
-                    if(failed>0){
-                        System.out.println( (totalMessages-failed) + " messages received");
-                        System.out.println(failed+" messages not received");
-                    }
+                        System.out.println( (totalMessages-failed) + " messages received, "+failed+ "failed");
+
+                    
             
                     System.exit(0);
               }
