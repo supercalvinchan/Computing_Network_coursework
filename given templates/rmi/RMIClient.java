@@ -42,7 +42,8 @@ public class RMIClient {
                 try{
                     //Get IP address and port for registry
                     //And bind server to the registry
-                    Registry registry=LocateRegistry.getRegistry(args[0]);
+		    //port=1099
+                    Registry registry=LocateRegistry.getRegistry(args[0], 1099);
                     iRMIServer=(RMIServerI)Naming.lookup(urlServer);
 
 
@@ -51,6 +52,7 @@ public class RMIClient {
 
                         //message constructor(total number, current message no.);
                         MessageInfo message=new MessageInfo(numMessages, i);
+			//receive message interface
                         iRMIServer.receiveMessage(message);
                     }
 
