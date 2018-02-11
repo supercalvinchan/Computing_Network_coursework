@@ -31,7 +31,8 @@ public class RMIServer extends UnicastRemoteObject implements RMIServerI {
                 System.out.println("start receiving messages");
              
 
-		//Log receipt of the message, setting any received message to 1
+		//Log receipt of the message
+		//if received, mark it as "1"
                 receivedMessages[msg.messageNum]=1;
 
 		//If this is the last expected message,
