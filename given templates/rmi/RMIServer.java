@@ -31,17 +31,17 @@ public class RMIServer extends UnicastRemoteObject implements RMIServerI {
                 System.out.println("start receiving messages");
              
 
-		//Log receipt of the message
+		//Log receipt of the message, setting any received message to 1
                 receivedMessages[msg.messageNum]=1;
 
 		//If this is the last expected message,
-		//identify any missing messages
+		//identify any missing messages using a for loop
                 if(msg.messageNum==totalMessages-1){
                     int failed=0;
 
                     for(int i=0; i<totalMessages; i++){
                         if(receivedMessages[i]!=1)
-                            failed++;
+                            failed++;//if !=1, this receive is failed
                     }
 
 
@@ -64,6 +64,8 @@ public class RMIServer extends UnicastRemoteObject implements RMIServerI {
                     System.setSecurityManager(new SecurityManager());
 
 		// Instantiate the server class, bind to RMI registry
+		 //by using the "localhost" in etc/hosts, it automatically gives the local IP address
+		//not having to input in command line
                 try{
                     rmis=new RMIServer();
                     rebindServer("localhost", rmis);
